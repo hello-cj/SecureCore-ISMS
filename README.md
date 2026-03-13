@@ -2,6 +2,11 @@
 
 A web-based Employee Management System built with **Laravel 10** and **MySQL**, focused on security best practices including role-based access control, authentication hardening, and audit logging.
 
+## Documentation
+
+The full security project documentation is available here:
+[SecureCore Security Documentation](docs/SecureCore_Security_Documentation.pdf)
+
 ---
 
 ## Features
