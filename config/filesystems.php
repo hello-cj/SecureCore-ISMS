@@ -56,6 +56,12 @@ return [
             'throw' => false,
         ],
 
+        'monitored' => [
+            'driver' => 'local',
+            'root' => storage_path('app/monitored'),
+            'throw' => false,
+        ],
+
     ],
 
     /*

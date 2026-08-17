@@ -29,5 +29,22 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage', function(User $user) {
             return $user->role === 'admin';
         });
+
+        // ── File Integrity Module Gates ──────────────────────────
+        Gate::define('uploadDocument', function (User $user) {
+            return in_array($user->role, ['employee', 'manager', 'admin']);
+        });
+
+        Gate::define('approveDocument', function (User $user) {
+            return in_array($user->role, ['manager', 'admin']);
+        });
+
+        Gate::define('verifyIntegrity', function (User $user) {
+            return in_array($user->role, ['manager', 'admin']);
+        });
+
+        Gate::define('viewAllReports', function (User $user) {
+            return in_array($user->role, ['manager', 'admin']);
+        });
     }
 }

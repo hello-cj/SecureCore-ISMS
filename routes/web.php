@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployeeController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MonitoredFileController;
 
 // Root route → redirect to login
 Route::get('/', function () {
@@ -53,6 +54,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Monitored Files (File Integrity Module)
+    Route::get('monitored-files', [MonitoredFileController::class, 'index'])->name('monitored-files.index');
+    Route::get('monitored-files/create', [MonitoredFileController::class, 'create'])->name('monitored-files.create');
+    Route::post('monitored-files', [MonitoredFileController::class, 'store'])->name('monitored-files.store');
+    Route::get('monitored-files/{monitoredFile}', [MonitoredFileController::class, 'show'])->name('monitored-files.show');
+    Route::post('monitored-files/{monitoredFile}/approve', [MonitoredFileController::class, 'approve'])->name('monitored-files.approve');
+    Route::post('monitored-files/{monitoredFile}/reject', [MonitoredFileController::class, 'reject'])->name('monitored-files.reject');
+    Route::post('monitored-files/{monitoredFile}/verify', [MonitoredFileController::class, 'verify'])->name('monitored-files.verify');
+
 });
 
 // Auth routes

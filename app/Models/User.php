@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->role === 'employee';
     }
 
+    public function isManager(): bool
+    {
+        return $this->role === 'manager';
+    }
+
     // ── Lockout helpers ───────────────────────────────────────
     public function isLocked(): bool
     {
